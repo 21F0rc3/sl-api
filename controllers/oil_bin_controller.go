@@ -3,8 +3,8 @@ package controllers
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"sl-api/domain"
-	"sl-api/services"
+	"ufp/smartlion-api/domain"
+	"ufp/smartlion-api/services"
 )
 
 // @BasePath /api/v1

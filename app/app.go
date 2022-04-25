@@ -5,8 +5,8 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"net/http"
-	"sl-api/controllers"
-	"sl-api/services"
+	"ufp/smartlion-api/controllers"
+	"ufp/smartlion-api/services"
 )
 
 func Run() {

@@ -2,7 +2,7 @@ package services
 
 import (
 	"fmt"
-	"sl-api/domain"
+	"ufp/smartlion-api/domain"
 )
 
 /* Error messages */

@@ -4,7 +4,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"sl-api/domain"
+	"ufp/smartlion-api/domain"
 )
 
 func AuthorizationRequired() gin.HandlerFunc {

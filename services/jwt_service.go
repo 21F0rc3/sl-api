@@ -3,9 +3,9 @@ package services
 import (
 	"fmt"
 	"io/ioutil"
-	"sl-api/domain"
 	"strings"
 	"time"
+	"ufp/smartlion-api/domain"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"

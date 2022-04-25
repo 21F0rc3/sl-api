@@ -1,7 +1,7 @@
 package main
 
 import (
-	"sl-api/app"
+	"ufp/smartlion-api/app"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
-	"sl-api/domain"
+	"ufp/smartlion-api/domain"
 )
 
 var Database *gorm.DB

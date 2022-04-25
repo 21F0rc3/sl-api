@@ -5,8 +5,8 @@ package controllers
 import (
 	"fmt"
 	"net/http"
-	"sl-api/domain"
-	"sl-api/services"
+	"ufp/smartlion-api/domain"
+	"ufp/smartlion-api/services"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
