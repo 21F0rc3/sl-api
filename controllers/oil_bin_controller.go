@@ -7,6 +7,17 @@ import (
 	"sl-api/services"
 )
 
+// @BasePath /api/v1
+
+// GetAllOilBins godoc
+// @Summary get all bins
+// @Schemes
+// @Description returns all the oil bins registered
+// @Tags example
+// @Accept json
+// @Produce json
+// @Success 200 {string} GetAllOilBins
+// @Router /oil-bin/ [get]
 func GetAllOilBins(ctx *gin.Context) {
 	allBins, err := services.GetAllOilBins()
 
@@ -19,7 +30,7 @@ func GetAllOilBins(ctx *gin.Context) {
 }
 
 func GetBin(ctx *gin.Context) {
-	id := ctx.Param("oil_bin_id")
+	id := ctx.Param("id")
 
 	var bin domain.OilBin
 
@@ -56,7 +67,7 @@ func PostBin(ctx *gin.Context) {
 }
 
 func DeleteOilBin(ctx *gin.Context) {
-	id := ctx.Param("oil_bin_id")
+	id := ctx.Param("id")
 
 	err := services.DeleteOilBin(id)
 	if err != nil {

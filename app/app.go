@@ -2,6 +2,9 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"net/http"
 	"sl-api/controllers"
 	"sl-api/services"
 )
@@ -11,14 +14,31 @@ func Run() {
 
 	router := gin.Default()
 
-	router.GET("/oil-bins", controllers.GetAllOilBins)
-	router.GET("/oil-bins/:oil_bin_id", controllers.GetBin)
+	/* Authorization required*/
+	oilBin := router.Group("/oil-bin")
+	oilBin.Use(services.AuthorizationRequired())
+	{
+		oilBin.GET("/", controllers.GetAllOilBins)
+		oilBin.GET("/:id", controllers.GetBin)
+		oilBin.POST("/", controllers.PostBin)
+		oilBin.DELETE("/:id", controllers.DeleteOilBin)
+	}
 
-	router.POST("/oil-bins", controllers.PostBin)
+	/* Free access */
+	auth := router.Group("/auth")
+	{
+		auth.POST("/login", controllers.LoginHandler)
+		auth.POST("/register", controllers.RegisterHandler)
+		auth.PUT("/refresh_token", controllers.RefreshHandler)
+	}
 
-	router.DELETE("/oil-bins/:oil_bin_id", controllers.DeleteOilBin)
+	router.GET("/hello", func(ctx *gin.Context) {
+		ctx.IndentedJSON(http.StatusOK, gin.H{"hello": "world!"})
+	})
 
-	err := router.Run("localhost:8080")
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	err := router.Run(":8080")
 
 	if err != nil {
 		panic(err)

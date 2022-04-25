@@ -22,11 +22,21 @@ func Setup() {
 	log.Println("Established connection to Database")
 
 	/* Create tables that dont already exist */
+	createTables()
+
+	log.Println("Automigration Complete!")
+}
+
+func createTables() {
 	migErr := Database.AutoMigrate(&domain.OilBin{})
 	if migErr != nil {
 		panic(migErr)
 	}
-	log.Println("Automigration Complete!")
+
+	migErr = Database.AutoMigrate(&domain.User{})
+	if migErr != nil {
+		panic(migErr)
+	}
 }
 
 func seed() {
