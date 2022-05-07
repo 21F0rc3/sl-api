@@ -34,7 +34,7 @@ func GetBin(ctx *gin.Context) {
 }
 
 func PostBin(ctx *gin.Context) {
-	var bin models.OilBin
+	var bin domain.OilBin
 
 	bindErr := ctx.BindJSON(&bin) /* BindJSON copia o conteudo do Body do Request para o bin */
 
