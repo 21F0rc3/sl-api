@@ -12,7 +12,7 @@ var Database *gorm.DB
 
 func Setup() {
 	/* Connection string to Database */
-	dsn := "host=localhost user=postgres password=21190 dbname=slapi port=5432 sslmode=disable TimeZone=Europe/Lisbon"
+	dsn := "host=ec2-52-4-104-184.compute-1.amazonaws.com user=zpgnxqyaesajeg password=f829f2c0d7e29fc770d47d57402252b0ee35b60a793445aca014a8c3f5cb4216 dbname=d1a6mks332cl55 port=5432 sslmode=disable TimeZone=Europe/Lisbon"
 
 	var openErr error
 	Database, openErr = gorm.Open(postgres.Open(dsn), &gorm.Config{})
