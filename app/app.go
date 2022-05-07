@@ -1,6 +1,8 @@
 package app
 
 import (
+	"log"
+	"os"
 	"sl-api/controllers"
 	"sl-api/services"
 
@@ -21,7 +23,13 @@ func Run() {
 
 	router.POST("/addUser", controllers.PostUser)
 
-	err := router.Run("localhost:8080")
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	err := router.Run(":" + port)
 
 	if err != nil {
 		panic(err)
