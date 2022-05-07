@@ -1,3 +1,5 @@
+// +heroku goVersion go1.18
+
 module sl-api
 
 go 1.18
