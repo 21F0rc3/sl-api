@@ -97,6 +97,32 @@
 			"revisionTime": "2022-05-06T18:59:58Z"
 		},
 		{
+			"path": "github.com/jackc/pgx/v4",
+			"revision": ""
+		},
+		{
+			"path": "github.com/jackc/pgx/v4/stdlib",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "V5XeybIYyfNl7KE8NWA6rKFmFTA=",
+			"path": "github.com/jinzhu/gorm",
+			"revision": "5c235b72a414e448d1f441aba24a47fd6eb976f4",
+			"revisionTime": "2021-11-20T01:15:37Z"
+		},
+		{
+			"checksumSHA1": "qVSKDlROYfX14KBztCG4nZ1f6ok=",
+			"path": "github.com/jinzhu/inflection",
+			"revision": "b5281034e75ed100658f8d9d0b2837f3fad4e8b3",
+			"revisionTime": "2021-01-11T02:29:12Z"
+		},
+		{
+			"checksumSHA1": "Bi654innC9buN28Kyel0x6b9zrM=",
+			"path": "github.com/jinzhu/now",
+			"revision": "f067b166b35a996b9ff5a0f610225e1458f23adc",
+			"revisionTime": "2022-03-17T06:16:25Z"
+		},
+		{
 			"checksumSHA1": "54f94f8rOeNVfmwSFpjZOEiaRSQ=",
 			"path": "github.com/json-iterator/go",
 			"revision": "024077e996b048517130b21ea6bf12aa23055d3d",
@@ -275,6 +301,58 @@
 			"path": "gopkg.in/yaml.v2",
 			"revision": "7649d4548cb53a614db133b2a8ac1f31859dda8c",
 			"revisionTime": "2020-11-17T15:46:20Z"
+		},
+		{
+			"path": "gorm.io/driver/gorm",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "ZrJaE6uzwdGo4Tr68HIxJSC7eU0=",
+			"path": "gorm.io/driver/postgres",
+			"revision": "09cf0d2278fef84c2a4d049d11634ee43ccb966d",
+			"revisionTime": "2022-04-24T04:00:04Z"
+		},
+		{
+			"checksumSHA1": "Olo/5vK8W82zpNeNAjwBO8Gbrhw=",
+			"path": "gorm.io/gorm",
+			"revision": "19b8d37ae8155667d76021e4ca3314bb571756be",
+			"revisionTime": "2022-05-04T10:57:53Z"
+		},
+		{
+			"path": "gorm.io/gorm/callbacks",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "RfHlMM7rIrTAlTCskGITb/IwKqk=",
+			"path": "gorm.io/gorm/clause",
+			"revision": "19b8d37ae8155667d76021e4ca3314bb571756be",
+			"revisionTime": "2022-05-04T10:57:53Z"
+		},
+		{
+			"checksumSHA1": "nw5zUwiRxANlMpbwtMk/06eLViE=",
+			"path": "gorm.io/gorm/logger",
+			"revision": "19b8d37ae8155667d76021e4ca3314bb571756be",
+			"revisionTime": "2022-05-04T10:57:53Z"
+		},
+		{
+			"path": "gorm.io/gorm/migrator",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "2HxLlKyYQE80Vrv+htCcpfFb7Aw=",
+			"path": "gorm.io/gorm/schema",
+			"revision": "19b8d37ae8155667d76021e4ca3314bb571756be",
+			"revisionTime": "2022-05-04T10:57:53Z"
+		},
+		{
+			"checksumSHA1": "zC7WasjI6dSvMaRiy2o2G1TJMmo=",
+			"path": "gorm.io/gorm/utils",
+			"revision": "19b8d37ae8155667d76021e4ca3314bb571756be",
+			"revisionTime": "2022-05-04T10:57:53Z"
+		},
+		{
+			"path": "sl-api-master",
+			"revision": ""
 		}
 	],
 	"rootPath": "sl-api-master"
