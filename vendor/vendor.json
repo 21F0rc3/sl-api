@@ -3,22 +3,6 @@
 	"ignore": "test",
 	"package": [
 		{
-			"path": "app",
-			"revision": ""
-		},
-		{
-			"path": "controllers",
-			"revision": ""
-		},
-		{
-			"path": "models",
-			"revision": ""
-		},
-		{
-			"path": "services",
-			"revision": ""
-		},
-		{
 			"path": "sl-api",
 			"revision": ""
 		},
