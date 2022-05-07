@@ -12,6 +12,12 @@ import (
 func Run() {
 	services.Setup()
 
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	router := gin.Default()
 
 	router.GET("/oil-bins", controllers.GetAllOilBins)
@@ -22,12 +28,6 @@ func Run() {
 	router.DELETE("/oil-bins/:oil_bin_id", controllers.DeleteOilBin)
 
 	router.POST("/addUser", controllers.PostUser)
-
-	port := os.Getenv("PORT")
-
-	if port == "" {
-		log.Fatal("$PORT must be set")
-	}
 
 	err := router.Run(":" + port)
 
