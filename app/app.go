@@ -4,21 +4,19 @@ import (
 	"log"
 	"os"
 	"sl-api/controllers"
-	"sl-api/services"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Run() {
-	services.Setup()
-
+	//services.Setup()
 	port := os.Getenv("PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
 
-	router := gin.Default()
+	router := gin.New()
 
 	router.GET("/oil-bins", controllers.GetAllOilBins)
 	router.GET("/oil-bins/:oil_bin_id", controllers.GetBin)
