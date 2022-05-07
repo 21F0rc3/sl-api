@@ -4,17 +4,19 @@ import (
 	"log"
 	"os"
 	"sl-api/controllers"
+	"sl-api/services"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Run() {
-	//services.Setup()
 	port := os.Getenv("PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+
+	services.Setup()
 
 	router := gin.New()
 
