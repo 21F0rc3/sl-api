@@ -1,6 +1,31 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"path": "app",
+			"revision": ""
+		},
+		{
+			"path": "controllers",
+			"revision": ""
+		},
+		{
+			"path": "models",
+			"revision": ""
+		},
+		{
+			"path": "services",
+			"revision": ""
+		},
+		{
+			"path": "sl-api",
+			"revision": ""
+		},
+		{
+			"path": "tests",
+			"revision": ""
+		}
+	],
 	"rootPath": "sl-api-master"
 }
