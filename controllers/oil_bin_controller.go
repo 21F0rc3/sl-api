@@ -20,7 +20,7 @@ func GetAllOilBins(ctx *gin.Context) {
 }
 
 func GetBin(ctx *gin.Context) {
-	id := ctx.Param("oil_bin_id")
+	id := ctx.Param(OIL_BIN_ID_ATTR_NAME)
 
 	var bin models.OilBin
 
@@ -57,7 +57,7 @@ func PostBin(ctx *gin.Context) {
 }
 
 func DeleteOilBin(ctx *gin.Context) {
-	id := ctx.Param("oil_bin_id")
+	id := ctx.Param(OIL_BIN_ID_ATTR_NAME)
 
 	err := services.DeleteOilBin(id)
 	if err != nil {
