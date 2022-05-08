@@ -8,6 +8,31 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func GetAllUsers(ctx *gin.Context) {
+	allUsers, err := services.GetAllUsers()
+
+	/* Significa que não existem dados na base de dados */
+	if err != nil {
+		addError(ctx, err)
+	}
+
+	closeWithData(ctx, http.StatusOK, allUsers)
+}
+
+func GetUser(ctx *gin.Context) {
+	id := ctx.Param(USER_ID_ATTR_NAME)
+
+	var user models.User
+
+	user, getErr := services.GetUser(id)
+	if getErr != nil {
+		closeWithError(ctx, http.StatusNotFound, getErr)
+		return
+	}
+
+	closeWithData(ctx, http.StatusOK, user)
+}
+
 func PostUser(ctx *gin.Context) {
 	var user models.User
 

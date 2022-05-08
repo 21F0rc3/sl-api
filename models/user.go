@@ -4,5 +4,6 @@ import "github.com/jinzhu/gorm"
 
 type User struct {
 	gorm.Model
-	Firebase_ID int64
+	user_type_id int
+	Firebase_ID  int64 `gorm:"unique"`
 }
