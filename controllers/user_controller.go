@@ -20,11 +20,11 @@ func GetAllUsers(ctx *gin.Context) {
 }
 
 func GetUser(ctx *gin.Context) {
-	id := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
+	firebase_uid := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
 
 	var user models.User
 
-	user, getErr := services.GetUser(id)
+	user, getErr := services.GetUser(firebase_uid)
 	if getErr != nil {
 		closeWithError(ctx, http.StatusNotFound, getErr)
 		return
