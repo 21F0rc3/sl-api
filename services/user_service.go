@@ -12,11 +12,11 @@ func InsertUser(user *models.User) error {
 	return nil
 }
 
-func GetUser(id string) (models.User, error) {
+func GetUser(firebase_uid string) (models.User, error) {
 	user := models.User{}
 
-	// Vai buscar o primeiro user com o correspondente id
-	Database.First(&user, id)
+	// Vai buscar o primeiro user com o correspondente uid
+	Database.First(&user, "Firebase_UID = ?", firebase_uid)
 
 	if user.ID == 0 { // Caso não encontre nenhum utilizador retorna um erro
 		return user, notFoundError
