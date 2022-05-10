@@ -20,7 +20,7 @@ func GetAllUsers(ctx *gin.Context) {
 }
 
 func GetUser(ctx *gin.Context) {
-	id := ctx.Param(USER_ID_ATTR_NAME)
+	id := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
 
 	var user models.User
 

@@ -20,6 +20,7 @@ const SENSOR_TYPE_ID_ATTR_NAME = "sensor_type_id"
 const SENSOR_ID_ATTR_NAME = "sensor_id"
 const USER_TYPE_ID_ATTR_NAME = "user_type_id"
 const USER_ID_ATTR_NAME = "user_id"
+const FIREBASE_USER_UID_ATTR_NAME = "firebase_uid"
 
 /* Helper functions */
 func addError(ctx *gin.Context, err error) {
