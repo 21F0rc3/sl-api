@@ -26,7 +26,7 @@
   <h3 align="center">Smart Lion API</h3>
 
   <p align="center">
-    A Flutter project to integrate an IoT system on the disposal of used kitchen oil.
+    A GO API to integrate an IoT system on the disposal of used kitchen oil.
     <br />
     <a href="https://github.com/21F0rc3/sl-api/"><strong>Explore the docs »</strong></a>
     <br />
@@ -54,7 +54,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
     </li>
-    <li><a href="#uiux">UI/UX</a></li>
   </ol>
 </details>
 
