@@ -31,7 +31,9 @@
     <a href="https://github.com/21F0rc3/sl-api/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/21F0rc3/sl-api/">View Demo</a>
+    <a href="https://github.com/21F0rc3/sl-api/">SmartLion API</a>
+    ·
+    <a href="https://github.com/fredmnpinto/smart_lion_mobile/">SmartLion Mobile</a>
     ·
     <a href="https://github.com/21F0rc3/sl-api/issues">Report Bug</a>
     ·
