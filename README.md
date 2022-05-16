@@ -81,7 +81,7 @@ O  sistema  deverá  ainda  possuir  uma  app  móvel  que  permite  identificar
 [contributors-url]: https://github.com/21F0rc3/sl-api/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/21F0rc3/sl-api?style=for-the-badge
 [forks-url]: https://github.com/21F0rc3/sl-api//network/members
-[stars-shield]: https://img.shields.io/github/stars/21F0rc3/sl-api/?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/21F0rc3/sl-api?style=for-the-badge
 [stars-url]: https://github.com/21F0rc3/sl-api/stargazers
 [issues-shield]: https://img.shields.io/github/issues/21F0rc3/sl-api?style=for-the-badge
 [issues-url]: https://github.com/21F0rc3/sl-api/issues
