@@ -1,23 +1,25 @@
 package app
 
 import (
-	"sl-api/controllers"
-
 	"github.com/gin-gonic/gin"
+	"sl-api/controllers"
+	fbauth "sl-api/services/auth"
 )
 
-func Routes(router *gin.Engine) {
+func SetRoutes(router *gin.Engine) {
 
+	//router.Use(fbauth.AuthJWT())
 	//
 	//---------------------------------------------------------
 	//   Additional Comment
 	//---------------------------------------------------------
 	//
-
-	router.GET("/additional-comment", controllers.GetAllAdditionalComments)
-	router.GET("/additional-comment/:"+controllers.ADDITIONAL_COMMENT_ID_ATTR_NAME, controllers.GetAdditionalComment)
-	router.POST("/additional-comment", controllers.PostAdditionalComment)
-	router.DELETE("/additional-comment/:"+controllers.ADDITIONAL_COMMENT_ID_ATTR_NAME, controllers.DeleteAdditionalComment)
+	additionalComment := router.Group("/additional-comment")
+	additionalComment.Use(fbauth.AuthJWT())
+	additionalComment.GET("/", controllers.GetAllAdditionalComments)
+	additionalComment.GET("/:"+controllers.ADDITIONAL_COMMENT_ID_ATTR_NAME, controllers.GetAdditionalComment)
+	additionalComment.POST("/", controllers.PostAdditionalComment)
+	additionalComment.DELETE("/:"+controllers.ADDITIONAL_COMMENT_ID_ATTR_NAME, controllers.DeleteAdditionalComment)
 
 	//
 	//---------------------------------------------------------
@@ -25,10 +27,11 @@ func Routes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/bottle", controllers.GetAllBottles)
-	router.GET("/bottle/:"+controllers.BOTTLE_ID_ATTR_NAME, controllers.GetBottle)
-	router.POST("/bottle", controllers.PostBottle)
-	router.DELETE("/bottle/:"+controllers.BOTTLE_ID_ATTR_NAME, controllers.DeleteBottle)
+	bottle := router.Group("/bottle")
+	bottle.GET("/", controllers.GetAllBottles)
+	bottle.GET("/:"+controllers.BOTTLE_ID_ATTR_NAME, controllers.GetBottle)
+	bottle.POST("/", controllers.PostBottle)
+	bottle.DELETE("/:"+controllers.BOTTLE_ID_ATTR_NAME, controllers.DeleteBottle)
 
 	//
 	//---------------------------------------------------------

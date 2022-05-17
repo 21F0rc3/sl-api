@@ -4,11 +4,17 @@ import (
 	"log"
 	"os"
 	"sl-api/services"
+	fbauth "sl-api/services/auth"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Run() {
+	fbErr := fbauth.InitAuth()
+	if fbErr != nil {
+		log.Fatalln("Failed to initialize firebase auth", fbErr)
+	}
+
 	port := os.Getenv("PORT")
 
 	if port == "" {
@@ -17,9 +23,9 @@ func Run() {
 
 	services.Setup()
 
-	router := gin.New()
+	router := gin.Default()
 
-	Routes(router)
+	SetRoutes(router)
 
 	// RUN
 	err := router.Run(":" + port)

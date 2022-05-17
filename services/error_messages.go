@@ -6,7 +6,7 @@ import (
 
 /* Error messages */
 var (
-	notFoundError  = fmt.Errorf("___ not found")
-	emptyDbError   = fmt.Errorf("there are no ___ loaded")
-	badParamsError = fmt.Errorf("not enough or invalid parameters")
+	NotFoundError  = fmt.Errorf("___ not found")
+	EmptyDbError   = fmt.Errorf("there are no ___ loaded")
+	BadParamsError = fmt.Errorf("not enough or invalid parameters")
 )
