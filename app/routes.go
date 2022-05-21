@@ -1,9 +1,10 @@
 package app
 
 import (
-	"github.com/gin-gonic/gin"
 	"sl-api/controllers"
 	fbauth "sl-api/services/auth"
+
+	"github.com/gin-gonic/gin"
 )
 
 func SetRoutes(router *gin.Engine) {
@@ -39,10 +40,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/deposit", controllers.GetAllDeposits)
-	router.GET("/deposit/:"+controllers.DEPOSIT_ID_ATTR_NAME, controllers.GetDeposit)
-	router.POST("/deposit", controllers.PostDeposit)
-	router.DELETE("/deposit/:"+controllers.DEPOSIT_ID_ATTR_NAME, controllers.DeleteDeposit)
+	deposit := router.Group("/deposit")
+	deposit.GET("/", controllers.GetAllDeposits)
+	deposit.GET("/:"+controllers.DEPOSIT_ID_ATTR_NAME, controllers.GetDeposit)
+	deposit.POST("/", controllers.PostDeposit)
+	deposit.DELETE("/:"+controllers.DEPOSIT_ID_ATTR_NAME, controllers.DeleteDeposit)
 
 	//
 	//---------------------------------------------------------
@@ -50,10 +52,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/liquid-type", controllers.GetAllLiquidTypes)
-	router.GET("/liquid-type/:"+controllers.LIQUID_TYPE_ID_ATTR_NAME, controllers.GetLiquidType)
-	router.POST("/liquid-type", controllers.PostLiquidType)
-	router.DELETE("/liquid-type/:"+controllers.LIQUID_TYPE_ID_ATTR_NAME, controllers.DeleteLiquidType)
+	liquid_type := router.Group("/liquid-type")
+	liquid_type.GET("/", controllers.GetAllLiquidTypes)
+	liquid_type.GET("/:"+controllers.LIQUID_TYPE_ID_ATTR_NAME, controllers.GetLiquidType)
+	liquid_type.POST("/", controllers.PostLiquidType)
+	liquid_type.DELETE("/:"+controllers.LIQUID_TYPE_ID_ATTR_NAME, controllers.DeleteLiquidType)
 
 	//
 	//---------------------------------------------------------
@@ -61,10 +64,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/oil-bin", controllers.GetAllOilBins)
-	router.GET("/oil-bin/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.GetBin)
-	router.POST("/oil-bin", controllers.PostBin)
-	router.DELETE("/oil-bin/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.DeleteOilBin)
+	oil_bin := router.Group("/oil-bin")
+	oil_bin.GET("/", controllers.GetAllOilBins)
+	oil_bin.GET("/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.GetBin)
+	oil_bin.POST("/", controllers.PostBin)
+	oil_bin.DELETE("/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.DeleteOilBin)
 
 	//
 	//---------------------------------------------------------
@@ -72,10 +76,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/review-state", controllers.GetAllReviewStates)
-	router.GET("/review-state/:"+controllers.REVIEW_STATE_ID_ATTR_NAME, controllers.GetReviewState)
-	router.POST("/review-state", controllers.PostReviewState)
-	router.DELETE("/review-state/:"+controllers.REVIEW_STATE_ID_ATTR_NAME, controllers.DeleteReviewState)
+	review_state := router.Group("/review-state")
+	review_state.GET("/", controllers.GetAllReviewStates)
+	review_state.GET("/:"+controllers.REVIEW_STATE_ID_ATTR_NAME, controllers.GetReviewState)
+	review_state.POST("/", controllers.PostReviewState)
+	review_state.DELETE("/:"+controllers.REVIEW_STATE_ID_ATTR_NAME, controllers.DeleteReviewState)
 
 	//
 	//---------------------------------------------------------
@@ -83,10 +88,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/sample-liquid", controllers.GetAllSampleLiquids)
-	router.GET("/sample-liquid/:"+controllers.SAMPLE_LIQUID_ID_ATTR_NAME, controllers.GetSampleLiquid)
-	router.POST("/sample-liquid", controllers.PostSampleLiquid)
-	router.DELETE("/sample-liquid/:"+controllers.SAMPLE_LIQUID_ID_ATTR_NAME, controllers.DeleteSampleLiquid)
+	sample_liquid := router.Group("/sample-liquid")
+	sample_liquid.GET("/", controllers.GetAllSampleLiquids)
+	sample_liquid.GET("/:"+controllers.SAMPLE_LIQUID_ID_ATTR_NAME, controllers.GetSampleLiquid)
+	sample_liquid.POST("/", controllers.PostSampleLiquid)
+	sample_liquid.DELETE("/:"+controllers.SAMPLE_LIQUID_ID_ATTR_NAME, controllers.DeleteSampleLiquid)
 
 	//
 	//---------------------------------------------------------
@@ -94,21 +100,23 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/sample", controllers.GetAllSamples)
-	router.GET("/sample/:"+controllers.SAMPLE_ID_ATTR_NAME, controllers.GetSample)
-	router.POST("/sample", controllers.PostSample)
-	router.DELETE("/sample/:"+controllers.SAMPLE_ID_ATTR_NAME, controllers.DeleteSample)
+	sample := router.Group("/sample")
+	sample.GET("/", controllers.GetAllSamples)
+	sample.GET("/:"+controllers.SAMPLE_ID_ATTR_NAME, controllers.GetSample)
+	sample.POST("/", controllers.PostSample)
+	sample.DELETE("/:"+controllers.SAMPLE_ID_ATTR_NAME, controllers.DeleteSample)
 
 	//
 	//---------------------------------------------------------
-	//   Sample Reading
+	//   Sensor Reading
 	//---------------------------------------------------------
 	//
 
-	router.GET("/sensor-reading", controllers.GetAllSensorReadings)
-	router.GET("/sensor-reading/:"+controllers.SENSOR_READING_ID_ATTR_NAME, controllers.GetSensorReading)
-	router.POST("/sensor-reading", controllers.PostSensorReading)
-	router.DELETE("/sensor-reading/:"+controllers.SENSOR_READING_ID_ATTR_NAME, controllers.DeleteSensorReading)
+	sensor_reading := router.Group("/sensor-reading")
+	sensor_reading.GET("/", controllers.GetAllSensorReadings)
+	sensor_reading.GET("/:"+controllers.SENSOR_READING_ID_ATTR_NAME, controllers.GetSensorReading)
+	sensor_reading.POST("/", controllers.PostSensorReading)
+	sensor_reading.DELETE("/:"+controllers.SENSOR_READING_ID_ATTR_NAME, controllers.DeleteSensorReading)
 
 	//
 	//---------------------------------------------------------
@@ -116,10 +124,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/sensor-type", controllers.GetAllSensorTypes)
-	router.GET("/sensor-type/:"+controllers.SENSOR_TYPE_ID_ATTR_NAME, controllers.GetSensorType)
-	router.POST("/sensor-type", controllers.PostSensorType)
-	router.DELETE("/sensor-type/:"+controllers.SENSOR_TYPE_ID_ATTR_NAME, controllers.DeleteSensorType)
+	sensor_type := router.Group("/sensor-type")
+	sensor_type.GET("/", controllers.GetAllSensorTypes)
+	sensor_type.GET("/:"+controllers.SENSOR_TYPE_ID_ATTR_NAME, controllers.GetSensorType)
+	sensor_type.POST("/", controllers.PostSensorType)
+	sensor_type.DELETE("/:"+controllers.SENSOR_TYPE_ID_ATTR_NAME, controllers.DeleteSensorType)
 
 	//
 	//---------------------------------------------------------
@@ -127,10 +136,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/sensor", controllers.GetAllSensors)
-	router.GET("/sensor/:"+controllers.SENSOR_ID_ATTR_NAME, controllers.GetSensor)
-	router.POST("/sensor", controllers.PostSensor)
-	router.DELETE("/sensor/:"+controllers.SENSOR_ID_ATTR_NAME, controllers.DeleteSensor)
+	sensor := router.Group("/sensor")
+	sensor.GET("/", controllers.GetAllSensors)
+	sensor.GET("/:"+controllers.SENSOR_ID_ATTR_NAME, controllers.GetSensor)
+	sensor.POST("/", controllers.PostSensor)
+	sensor.DELETE("/:"+controllers.SENSOR_ID_ATTR_NAME, controllers.DeleteSensor)
 
 	//
 	//---------------------------------------------------------
@@ -138,10 +148,11 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/user-type", controllers.GetAllUserTypes)
-	router.GET("/user-type/:"+controllers.USER_TYPE_ID_ATTR_NAME, controllers.GetUserType)
-	router.POST("/user-type", controllers.PostUserType)
-	router.DELETE("/user-type/:"+controllers.USER_TYPE_ID_ATTR_NAME, controllers.DeleteUserType)
+	user_type := router.Group("/user-type")
+	user_type.GET("/", controllers.GetAllUserTypes)
+	user_type.GET("/:"+controllers.USER_TYPE_ID_ATTR_NAME, controllers.GetUserType)
+	user_type.POST("/", controllers.PostUserType)
+	user_type.DELETE("/:"+controllers.USER_TYPE_ID_ATTR_NAME, controllers.DeleteUserType)
 
 	//
 	//---------------------------------------------------------
@@ -149,7 +160,8 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	router.GET("/user", controllers.GetAllUsers)
-	router.GET("/user/:firebase_uid", controllers.GetUser)
-	router.POST("/user", controllers.PostUser)
+	user := router.Group("/user")
+	user.GET("/", controllers.GetAllUsers)
+	user.GET("/:firebase_uid", controllers.GetUser)
+	user.POST("/", controllers.PostUser)
 }

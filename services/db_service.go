@@ -24,7 +24,22 @@ func Setup() {
 	log.Println("Established connection to Database")
 
 	/* Create tables that dont already exist */
-	migErr := Database.AutoMigrate(&models.OilBin{}, &models.User{}, &models.Bottle{}, &models.Sensor{}, &models.SensorReading{})
+	migErr := Database.AutoMigrate(
+		&models.AdditionalComment{},
+		&models.Bottle{},
+		&models.Deposit{},
+		&models.LiquidType{},
+		&models.OilBin{},
+		&models.ReviewState{},
+		&models.Sample{},
+		&models.SampleLiquid{},
+		&models.Sensor{},
+		&models.SensorReading{},
+		&models.SensorType{},
+		&models.User{},
+		&models.UserType{},
+	)
+
 	if migErr != nil {
 		panic(migErr)
 	}
