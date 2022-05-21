@@ -12,6 +12,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![License][license-shiled]][license-url]
 
 
 
@@ -87,3 +88,5 @@ O  sistema  deverá  ainda  possuir  uma  app  móvel  que  permite  identificar
 [stars-url]: https://github.com/21F0rc3/sl-api/stargazers
 [issues-shield]: https://img.shields.io/github/issues/21F0rc3/sl-api?style=for-the-badge
 [issues-url]: https://github.com/21F0rc3/sl-api/issues
+[license-shield]: https://img.shields.io/github/license/21F0rc3/sl-api
+[license-url]: https://github.com/21F0rc3/sl-api/blob/master/LICENSE
