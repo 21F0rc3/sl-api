@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 	"sl-api/models"
-	"sl-api/services"
+	"sl-api/services/providers"
 
 	"github.com/gin-gonic/gin"
 )

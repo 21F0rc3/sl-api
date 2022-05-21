@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 	"sl-api/models"
-	"sl-api/services"
+	"sl-api/services/providers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -32,11 +32,11 @@ func CountUserDeposits(ctx *gin.Context) {
 }
 
 func GetUser(ctx *gin.Context) {
-	firebase_uid := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
+	firebaseUid := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
 
 	var user models.User
 
-	user, getErr := services.GetUser(firebase_uid)
+	user, getErr := services.GetUser(firebaseUid)
 	if getErr != nil {
 		closeWithError(ctx, http.StatusNotFound, getErr)
 		return
