@@ -21,7 +21,7 @@ func CountUserDeposits(firebase_uid string) (int, error) {
 
 	var result Result
 
-	Database.Raw("SELECT COUNT(DEPOSITS.id) FROM Deposits JOIN BOTTLES ON bottle_id = BOTTLES.id WHERE Firebase_uid = ?", firebase_uid).Scan(&result)
+	services.Database.Raw("SELECT COUNT(DEPOSITS.id) FROM Deposits JOIN BOTTLES ON bottle_id = BOTTLES.id WHERE Firebase_uid = ?", firebase_uid).Scan(&result)
 
 	return result.count, nil
 }
