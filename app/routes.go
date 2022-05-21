@@ -60,6 +60,7 @@ func Routes(router *gin.Engine) {
 
 	router.GET("/oil-bin", controllers.GetAllOilBins)
 	router.GET("/oil-bin/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.GetBin)
+	router.GET("/oil-bin/search/:text_to_search", controllers.SearchOilBinQuery)
 	router.POST("/oil-bin", controllers.PostBin)
 	router.DELETE("/oil-bin/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.DeleteOilBin)
 

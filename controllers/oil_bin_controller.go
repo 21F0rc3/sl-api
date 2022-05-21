@@ -33,6 +33,19 @@ func GetBin(ctx *gin.Context) {
 	closeWithData(ctx, http.StatusOK, bin)
 }
 
+func SearchOilBinQuery(ctx *gin.Context) {
+	text_to_search := ctx.Param("text_to_search")
+
+	binResults, err := services.SearchOilBinQuery(text_to_search)
+
+	/* Means it has no entries on the database */
+	if err != nil {
+		addError(ctx, err)
+	}
+
+	closeWithData(ctx, http.StatusOK, binResults)
+}
+
 func PostBin(ctx *gin.Context) {
 	var bin models.OilBin
 
