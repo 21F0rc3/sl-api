@@ -148,6 +148,7 @@ func Routes(router *gin.Engine) {
 	//
 
 	router.GET("/user", controllers.GetAllUsers)
+	router.GET("/user/count-deposits/:firebase_uid", controllers.CountUserDeposits)
 	router.GET("/user/:firebase_uid", controllers.GetUser)
 	router.POST("/user", controllers.PostUser)
 }

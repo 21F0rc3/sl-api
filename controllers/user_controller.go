@@ -19,6 +19,18 @@ func GetAllUsers(ctx *gin.Context) {
 	closeWithData(ctx, http.StatusOK, allUsers)
 }
 
+func CountUserDeposits(ctx *gin.Context) {
+	firebase_uid := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
+
+	nrOfDeposits, getErr := services.CountUserDeposits(firebase_uid)
+	if getErr != nil {
+		closeWithError(ctx, http.StatusNotFound, getErr)
+		return
+	}
+
+	closeWithData(ctx, http.StatusOK, nrOfDeposits)
+}
+
 func GetUser(ctx *gin.Context) {
 	firebase_uid := ctx.Param(FIREBASE_USER_UID_ATTR_NAME)
 

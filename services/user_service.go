@@ -12,6 +12,19 @@ func InsertUser(user *models.User) error {
 	return nil
 }
 
+/// Conta o numero de depositos feitos pelo o utilizador
+func CountUserDeposits(firebase_uid string) (int, error) {
+	type Result struct {
+		count int
+	}
+
+	var result Result
+
+	Database.Raw("SELECT COUNT(DEPOSITS.id) FROM Deposits JOIN BOTTLES ON bottle_id = BOTTLES.id WHERE Firebase_uid = ?", firebase_uid).Scan(&result)
+
+	return result.count, nil
+}
+
 func GetUser(firebase_uid string) (models.User, error) {
 	user := models.User{}
 
