@@ -5,7 +5,14 @@ import (
 	"sl-api/services"
 )
 
-func InsertSensorReading(reading *models.SensorReading) error {
+func insertSensorReading(sType uint, sampleID uint, value float64) error {
+	sensor, stErr := GetSensorByType(sType)
+	if stErr != nil {
+		return stErr
+	}
+
+	reading := models.SensorReading{SensorID: sensor.ID, SampleID: sampleID, Value: value}
+
 	if services.Database.Create(reading).Error != nil {
 		return services.BadParamsError
 	}

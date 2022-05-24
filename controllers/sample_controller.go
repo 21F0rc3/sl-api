@@ -33,10 +33,27 @@ func GetSample(ctx *gin.Context) {
 	closeWithData(ctx, http.StatusOK, sample)
 }
 
-func PostSample(ctx *gin.Context) {
-	var sample models.Sample
+// PostLabSample
+// Description:
+// 		This endpoint serves the purpose of handling incoming
+//		test samples that will later converge into the AI. It
+//		shall not be used in production.
+//
+// Expects a POST request body with
+//	{
+//		LiquidTemperature,
+//		Turbidity,
+//		ExternalTemperature,
+//		LiquidLevel,
+//		...
+//	}
+func PostLabSample(ctx *gin.Context) {
+	var input struct {
+		readings SampleReadingsInput
+		liquids  SampleLiquidsInput
+	}
 
-	bindErr := ctx.BindJSON(&sample) /* BindJSON copia o conteudo do Body do Request para o comment */
+	bindErr := ctx.BindJSON(&input) /* BindJSON copia o conteudo do Body do Request para o comment */
 
 	/* Handle possible error of the binding */
 	if bindErr != nil {
@@ -44,16 +61,29 @@ func PostSample(ctx *gin.Context) {
 		return
 	}
 
-	/* Actual insertion on the Database */
-	insErr := services.InsertSample(&sample)
-
-	/* Handle possible error on the insertion */
-	if insErr != nil {
-		closeWithError(ctx, http.StatusInternalServerError, insErr)
+	/* Insert Sample entry */
+	sample, sErr := services.InsertSample()
+	if sErr != nil {
+		closeWithError(ctx, http.StatusInternalServerError, sErr)
 		return
 	}
 
-	closeWithData(ctx, http.StatusOK, sample)
+	/* Handle liquid quantities */
+	liquids := input.liquids
+	lErr := services.AssociateLiquids(sample.ID, liquids)
+	if lErr != nil {
+		closeWithError(ctx, http.StatusInternalServerError, lErr)
+		return
+	}
+
+	/* Handle sensor readings */
+	srErr := services.AssociateSensorReadings(sample.ID, input.readings)
+	if srErr != nil {
+		closeWithError(ctx, http.StatusInternalServerError, srErr)
+		return
+	}
+
+	closeWithOk(ctx)
 }
 
 func DeleteSample(ctx *gin.Context) {

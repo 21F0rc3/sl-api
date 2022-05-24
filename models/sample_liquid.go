@@ -4,7 +4,7 @@ import "gorm.io/gorm"
 
 type SampleLiquid struct {
 	gorm.Model
-	SampleID     int
+	SampleID     uint
 	LiquidTypeID int
 	Quantity     int
 }

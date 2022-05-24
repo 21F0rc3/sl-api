@@ -103,7 +103,7 @@ func SetRoutes(router *gin.Engine) {
 	sample := router.Group("/sample")
 	sample.GET("/", controllers.GetAllSamples)
 	sample.GET("/:"+controllers.SAMPLE_ID_ATTR_NAME, controllers.GetSample)
-	sample.POST("/", controllers.PostSample)
+	sample.POST("/", controllers.PostLabSample)
 	sample.DELETE("/:"+controllers.SAMPLE_ID_ATTR_NAME, controllers.DeleteSample)
 
 	//
@@ -115,7 +115,7 @@ func SetRoutes(router *gin.Engine) {
 	sensor_reading := router.Group("/sensor-reading")
 	sensor_reading.GET("/", controllers.GetAllSensorReadings)
 	sensor_reading.GET("/:"+controllers.SENSOR_READING_ID_ATTR_NAME, controllers.GetSensorReading)
-	sensor_reading.POST("/", controllers.PostSensorReading)
+	//sensor_reading.POST("/", controllers.PostSensorReading)
 	sensor_reading.DELETE("/:"+controllers.SENSOR_READING_ID_ATTR_NAME, controllers.DeleteSensorReading)
 
 	//

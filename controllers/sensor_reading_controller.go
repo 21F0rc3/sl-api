@@ -33,29 +33,6 @@ func GetSensorReading(ctx *gin.Context) {
 	closeWithData(ctx, http.StatusOK, sensor_reading)
 }
 
-func PostSensorReading(ctx *gin.Context) {
-	var sensor_reading models.SensorReading
-
-	bindErr := ctx.BindJSON(&sensor_reading) /* BindJSON copia o conteudo do Body do Request para o comment */
-
-	/* Handle possible error of the binding */
-	if bindErr != nil {
-		closeWithError(ctx, http.StatusInternalServerError, bindErr)
-		return
-	}
-
-	/* Actual insertion on the Database */
-	insErr := services.InsertSensorReading(&sensor_reading)
-
-	/* Handle possible error on the insertion */
-	if insErr != nil {
-		closeWithError(ctx, http.StatusInternalServerError, insErr)
-		return
-	}
-
-	closeWithData(ctx, http.StatusOK, sensor_reading)
-}
-
 func DeleteSensorReading(ctx *gin.Context) {
 	id := ctx.Param(SENSOR_READING_ID_ATTR_NAME)
 
