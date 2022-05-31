@@ -1,11 +1,10 @@
 package controllers
 
 import (
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"sl-api/models"
 	"sl-api/services/providers"
-
-	"github.com/gin-gonic/gin"
 )
 
 func GetAllOilBins(ctx *gin.Context) {
@@ -34,9 +33,9 @@ func GetBin(ctx *gin.Context) {
 }
 
 func SearchOilBinQuery(ctx *gin.Context) {
-	text_to_search := ctx.Param("text_to_search")
+	textToSearch := ctx.Query("param")
 
-	binResults, err := services.SearchOilBinQuery(text_to_search)
+	binResults, err := services.SearchOilBinQuery(textToSearch)
 
 	/* Means it has no entries on the database */
 	if err != nil {

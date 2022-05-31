@@ -64,12 +64,12 @@ func SetRoutes(router *gin.Engine) {
 	//---------------------------------------------------------
 	//
 
-	oil_bin := router.Group("/oil-bin")
-	oil_bin.GET("/", controllers.GetAllOilBins)
-	oil_bin.GET("/oil-bin/search/:text_to_search", controllers.SearchOilBinQuery)
-	oil_bin.GET("/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.GetBin)
-	oil_bin.POST("/", controllers.PostBin)
-	oil_bin.DELETE("/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.DeleteOilBin)
+	oilBin := router.Group("/oil-bin")
+	oilBin.GET("/", controllers.GetAllOilBins)
+	oilBin.GET("/search/", controllers.SearchOilBinQuery)
+	oilBin.GET("/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.GetBin)
+	oilBin.POST("/", controllers.PostBin)
+	oilBin.DELETE("/:"+controllers.OIL_BIN_ID_ATTR_NAME, controllers.DeleteOilBin)
 	//
 	//---------------------------------------------------------
 	//   Review State

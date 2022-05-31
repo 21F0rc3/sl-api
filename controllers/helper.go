@@ -1,9 +1,8 @@
 package controllers
 
 import (
-	"log"
-
 	"github.com/gin-gonic/gin"
+	"log"
 )
 
 /* Nomes da coluna que possui o ID dos diferentes models */
@@ -35,4 +34,12 @@ func closeWithError(ctx *gin.Context, statusCode int, err error) {
 
 func closeWithData(ctx *gin.Context, statusCode int, data interface{}) {
 	ctx.IndentedJSON(statusCode, gin.H{"data": data, "errors": ctx.Errors.Errors()})
+}
+
+func coalesce(str string, val string) string {
+	if str != "" {
+		return str
+	}
+
+	return val
 }

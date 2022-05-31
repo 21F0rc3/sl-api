@@ -2,6 +2,7 @@ package services
 
 import (
 	"log"
+	"os"
 	"sl-api/models"
 
 	"gorm.io/driver/postgres"
@@ -24,25 +25,28 @@ func Setup() {
 	log.Println("Established connection to Database")
 
 	/* Create tables that dont already exist */
-	migErr := Database.AutoMigrate(
-		&models.AdditionalComment{},
-		&models.Bottle{},
-		&models.Deposit{},
-		&models.LiquidType{},
-		&models.OilBin{},
-		&models.ReviewState{},
-		&models.Sample{},
-		&models.SampleLiquid{},
-		&models.Sensor{},
-		&models.SensorReading{},
-		&models.SensorType{},
-		&models.User{},
-		&models.UserType{},
-	)
+	if os.Getenv("SHOULD_MIGRATE") == "TRUE" {
+		migErr := Database.AutoMigrate(
+			&models.AdditionalComment{},
+			&models.Bottle{},
+			&models.Deposit{},
+			&models.LiquidType{},
+			&models.OilBin{},
+			&models.ReviewState{},
+			&models.Sample{},
+			&models.SampleLiquid{},
+			&models.Sensor{},
+			&models.SensorReading{},
+			&models.SensorType{},
+			&models.User{},
+			&models.UserType{},
+		)
 
-	if migErr != nil {
-		panic(migErr)
+		if migErr != nil {
+			panic(migErr)
+		}
 	}
+
 	log.Println("Automigration Complete!")
 
 }

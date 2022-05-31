@@ -20,13 +20,38 @@ func GetOilBin(id string) (models.OilBin, error) {
 func SearchOilBinQuery(search string) ([]models.OilBin, error) {
 	var binResults []models.OilBin
 
-	services.Database.Where("coordinate_x LIKE ? OR coordinate_y LIKE ? OR address LIKE ?", search, search, search).Find(&binResults)
+	search = "%" + search + "%"
+
+	services.Database.Where("coordinate_x::text ILIKE ? OR coordinate_y::text ILIKE ? or (coordinate_x::text || ' ' || coordinate_y::text) ilike ? OR address::text ILIKE ?", search, search, search, search).Find(&binResults)
 
 	if len(binResults) == 0 {
 		return binResults, services.EmptyDbError
 	}
 
 	return binResults, nil
+}
+
+func GetOilBinByLocation(latitude float64, longitude float64, maxRange float64) ([]models.OilBin, error) {
+	var binResults []models.OilBin
+
+	binResults, gAllErr := GetAllOilBins()
+	if gAllErr != nil {
+		return binResults, gAllErr
+	}
+
+	var binsNear []models.OilBin
+
+	for _, ob := range binResults {
+		if isOilBinNear(ob, latitude, longitude, maxRange) {
+			binsNear = append(binsNear, ob)
+		}
+	}
+
+	if len(binsNear) == 0 {
+		return binsNear, services.EmptyDbError
+	}
+
+	return binsNear, nil
 }
 
 func InsertOilBin(bin *models.OilBin) error {
@@ -51,4 +76,8 @@ func GetAllOilBins() ([]models.OilBin, error) {
 
 func DeleteOilBin(id string) error {
 	return services.Database.Delete(&models.OilBin{}, id).Error
+}
+
+func isOilBinNear(oilBin models.OilBin, latitude float64, longitude float64, maxRange float64) bool {
+	return maxRange < 0 || oilBin.DistanceTo(latitude, longitude) <= maxRange
 }
